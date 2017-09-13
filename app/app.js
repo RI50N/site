@@ -1,0 +1,4 @@
+angular
+    .module("customerRegistration", [
+        'ngMaterial'
+    ]);
