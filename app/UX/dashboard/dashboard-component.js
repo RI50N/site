@@ -3,22 +3,16 @@
 
   angular
     .module('customerRegistration')
-    .component('dashboardToolbar', {
+    .component('dashboard', {
       controller: Controller,
-      templateUrl: 'app/dashboard-toolbar/dashboard-toolbar-template.html',
+      templateUrl: 'app/UX/dashboard/dashboard-template.html'
     });
 
   Controller.$inject = [
+
   ];
 
   function Controller() {
     var self = this;
-
-    /* Public methods */
-    self.$onInit = onInit;
-
-    function onInit() {
-
-    }
   }
 }());

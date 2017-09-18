@@ -3,14 +3,10 @@
 
   angular
     .module('customerRegistration')
-    .component('dashboard', {
+    .component('dashboardDisplay', {
       controller: Controller,
-      templateUrl: 'app//dashboard/dashboard-template.html'
+      templateUrl: 'app/UX/dashboard/dashboard-display/dashboard-display-template.html'
     });
-
-  Controller.$inject = [
-
-  ];
 
   function Controller() {
     var self = this;

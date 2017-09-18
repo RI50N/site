@@ -5,7 +5,7 @@
     .module('customerRegistration')
     .component('dashboardSidenav', {
       controller: Controller,
-      templateUrl: 'app/dashboard-sidenav/dashboard-sidenav-template.html',
+      templateUrl: 'app/UX/dashboard/dashboard-sidenav/dashboard-sidenav-template.html',
     });
 
   Controller.$inject = [
