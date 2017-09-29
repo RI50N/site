@@ -1,4 +1,5 @@
 angular
     .module("customerRegistration", [
-        'ngMaterial'
+        'ngMaterial',
+        'dndLists'
     ]);

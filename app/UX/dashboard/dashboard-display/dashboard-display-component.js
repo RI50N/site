@@ -10,12 +10,28 @@
 
     Controller.$inject = [
         '$element',
-        '$log'
+        '$scope'
     ];
 
-    function Controller($element,$log) {
+    function Controller($element,$scope) {
         var self = this;
-        
+
+        $scope.models = {
+            selected: null,
+            lists: {"A": [], "B": []}
+        };
+
+        // Generate initial model
+        for (var i = 1; i <= 3; ++i) {
+            $scope.models.lists.A.push({label: "Item A" + i});
+            $scope.models.lists.B.push({label: "Item B" + i});
+        }
+
+        // Model to JSON for demo purpose
+        $scope.$watch('models', function(model) {
+            $scope.modelAsJson = angular.toJson(model, true);
+        }, true);
+
         self.$onInit=onInit;
         self.querySearch   = querySearch;
         self.newState = newState;

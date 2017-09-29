@@ -1,4 +1,43 @@
-<div layout="row" flex layout-align="center">
+<style>
+    /**
+ * The dnd-list should always have a min-height,
+ * otherwise you can't drop into it once it's empty
+ */
+    .multiDemo ul[dnd-list] {
+        min-height: 42px;
+        padding-left: 0px;
+    }
+
+    /**
+     * An element with .dndPlaceholder class will be
+     * added to the dnd-list while the user is dragging
+     * over it.
+     */
+    .multiDemo ul[dnd-list] .dndPlaceholder {
+        background-color: #ddd;
+        display: block;
+        min-height: 42px;
+    }
+
+    .multiDemo ul[dnd-list] li {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+        display: block;
+        margin-bottom: -1px;
+        padding: 10px 15px;
+    }
+
+    /**
+     * Show selected elements in green
+     */
+    .multiDemo ul[dnd-list] li.selected {
+        background-color: #dff0d8;
+        color: #3c763d;
+    }
+</style>
+<div layout="row"  layout-align="center">
     <div layout="column" layout-align="start center" style="border: dashed" flex="40">
         <div layout="row" style="border: dashed" >
             <md-button class="md-raised md-primary">Criar grupo</md-button>
@@ -15,9 +54,6 @@
                     </md-optgroup>
                 </md-select>
             </md-input-container>
-        </div>
-        <div layout="column" style="border: dashed" flex>
-
         </div>
     </div>
     <div layout="column" layout-align="start center" style="border: dashed" flex="40">
@@ -45,8 +81,21 @@
                 </md-not-found>
             </md-autocomplete>
         </div>
-        <div layout="column" style="border: dashed" flex>
+    </div>
+</div>
+<div layout="row" flex class="multiDemo"  layout-align="center">
+    <div layout="column" ng-repeat="list in models.lists" layout-align="start center" style="border: dashed" flex="40">
 
-        </div>
+            <ul dnd-list="list" style="border: dashed">
+                <li ng-repeat="item in list"
+                    dnd-draggable="item"
+                    dnd-moved="list.splice($index, 1)"
+                    dnd-effect-allowed="move"
+                    dnd-selected="models.selected = item"
+                    ng-class="{'selected': models.selected === item}">
+                    {{item.label}}
+                </li>
+            </ul>
+
     </div>
 </div>
